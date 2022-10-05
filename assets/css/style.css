@@ -42,3 +42,8 @@
 .text-field:focus {
     outline: none;
 }
+
+.footer {
+    position: sticky;
+    bottom: 0.1%;
+}

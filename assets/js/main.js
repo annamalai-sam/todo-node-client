@@ -6,6 +6,7 @@ async function getApi(url) {
 }
 function show(data) {
     let htmlDisplayBox = ""
+    let totalTask = 0
     if (data.length == 0) {
         htmlDisplayBox = `<div class="row g-3 m-auto">
           <div class="col">
@@ -14,6 +15,11 @@ function show(data) {
         </div>`
     } else {
         for (let todo of data) {
+            if (todo.finished) {
+            }
+            else {
+                totalTask = totalTask + 1
+            }
             let oneTodo =
                 `<div class="mt-5">
                     <div class="row">
@@ -29,7 +35,7 @@ function show(data) {
                     <form onsubmit="updateTask(${todo.id})">
                         <div class="row mt-3">
                             <div class="col-12">
-                                <input class="h4 text-field border-0 w-100" required value="${todo.title}" type="text" onfocus = "showSaveButton(${todo.id})" id="taskTitle${todo.id}" />
+                                <input class="h4 text-field border-0 h-75 w-100" required value="${todo.title}" type="text" onfocus = "showSaveButton(${todo.id})" id="taskTitle${todo.id}" />
                             </div>
                         </div>
                         <div class="row mt-3">
@@ -52,6 +58,12 @@ function show(data) {
         }
     }
     document.getElementById("contant").innerHTML = htmlDisplayBox
+    console.log(totalTask)
+    if (totalTask != null) {
+        const numberOfTasks = `<p class="text-secondary text-center"> Pending Task(s) : ${totalTask}   </p>`
+        document.getElementById("userTaskStatus").innerHTML = numberOfTasks;
+        // console.log(totalTask)
+    }
 }
 function displayableDate(date) {
     dueObject = new Date(date)
@@ -63,7 +75,7 @@ function displayableDate(date) {
 }
 function statusShower(statusIsCompleted, id) {
     if (statusIsCompleted) {
-        const returnTag = `<h3 class="btn btn-success" > Completed </h3>`
+        const returnTag = `<button class="btn btn-success" disabled> Completed </button>`
         return returnTag
     }
     else {

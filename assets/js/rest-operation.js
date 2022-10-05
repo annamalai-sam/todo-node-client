@@ -1,3 +1,4 @@
+
 function deleteTodo(event) {
     const todoId = event.getAttribute("data-todo-id")
     // console.log(todoId)
