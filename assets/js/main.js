@@ -60,8 +60,8 @@ function show(data) {
     document.getElementById("contant").innerHTML = htmlDisplayBox
     console.log(totalTask)
     if (totalTask != null) {
-        const numberOfTasks = `<p class="text-secondary text-center"> Pending Task(s) : ${totalTask}   </p>`
-        document.getElementById("userTaskStatus").innerHTML = numberOfTasks;
+        // const numberOfTasks = `<p class="text-secondary text-center"> Pending Task(s) : ${totalTask}   </p>`
+        // document.getElementById("userTaskStatus").innerHTML = numberOfTasks;
         // console.log(totalTask)
     }
 }
