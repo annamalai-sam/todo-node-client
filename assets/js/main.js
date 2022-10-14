@@ -1,10 +1,6 @@
-async function getApi(url) {
-    const response = await fetch(url);
-    var data = await response.json();
-    show(data);
-    // console.log(data)
-}
 function show(data) {
+    document.getElementById('user_id').setAttribute("value", data.id);
+    console.log(data.exp)
     let htmlDisplayBox = ""
     let totalTask = 0
     if (data.length == 0) {
@@ -14,7 +10,7 @@ function show(data) {
           </div>
         </div>`
     } else {
-        for (let todo of data) {
+        for (let todo of data.task) {
             if (todo.finished) {
             }
             else {
@@ -35,7 +31,7 @@ function show(data) {
                     <form onsubmit="updateTask(${todo.id})">
                         <div class="row mt-3">
                             <div class="col-12">
-                                <input class="h4 text-field border-0 h-75 w-100" required value="${todo.title}" type="text" onfocus = "showSaveButton(${todo.id})" id="taskTitle${todo.id}" />
+                                ${taskCompleted(todo)}
                             </div>
                         </div>
                         <div class="row mt-3">
@@ -58,10 +54,27 @@ function show(data) {
         }
     }
     document.getElementById("contant").innerHTML = htmlDisplayBox
-    console.log(totalTask)
+    // console.log(totalTask)
+    let footerContent = `<div class="row">
+        <div
+          class="col-6 d-flex align-items-center justify-content-center"
+          id="userNameSpace"
+        >
+          <div class="text-center">
+            <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i>
+            <p>${data.username}</p>
+          </div>
+        </div>
+        <div
+          class="col-6 d-flex align-items-center align-content-center justify-content-center"
+          id="userTaskStatus"
+        ></div>
+      </div>
+    `
+    document.getElementById("main-page-footer").innerHTML = footerContent;
     if (totalTask != null) {
-        // const numberOfTasks = `<p class="text-secondary text-center"> Pending Task(s) : ${totalTask}   </p>`
-        // document.getElementById("userTaskStatus").innerHTML = numberOfTasks;
+        const numberOfTasks = `<p class="text-secondary text-center"> Pending Task(s) : ${totalTask}   </p>`
+        document.getElementById("userTaskStatus").innerHTML = numberOfTasks;
         // console.log(totalTask)
     }
 }
@@ -75,12 +88,21 @@ function displayableDate(date) {
 }
 function statusShower(statusIsCompleted, id) {
     if (statusIsCompleted) {
-        const returnTag = `<button class="btn btn-success" disabled> Completed </button>`
+        const returnTag = `<button class="btn bg-success btn-success" disabled> Completed </button>`
         return returnTag
     }
     else {
         const returnTag = `<button data-todo-id="${id}" onclick = "updateTodo(this)" class="btn btn-outline-success" > Mark as completed </button> `
         return returnTag
+    }
+}
+
+function taskCompleted(todo) {
+    if (todo.finished) {
+        return `<input class="h4 bg-transparent text-field border-0 h-75 w-100" required value="${todo.title}" type="text" onfocus = "showSaveButton(${todo.id})" id="taskTitle${todo.id}" disabled />`
+    }
+    else {
+        return `<input class="h4 text-field border-0 h-75 w-100" required value="${todo.title}" type="text" onfocus="showSaveButton(${todo.id})" id="taskTitle${todo.id}" />`
     }
 }
 
@@ -90,3 +112,4 @@ function showSaveButton(todoId) {
     // console.log(saveButton)
     saveButton.style.display = "flex"
 }
+

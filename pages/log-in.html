@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="./../assets/css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.js"
+      integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <section class="container mt-5">
+      <div class="mt-5 parent-container-max-width">
+        <div class="mt-5">
+          <div class="mt-5">
+            <h1 class="text-center page-heading">login</h1>
+          </div>
+          <div class="card p-5 m-auto">
+            <form onsubmit="loginHandler(event)">
+              <div class="form-floating mt-5">
+                <input
+                  class="form-control border-end-0 border-top-0 border-start-0 border-2 border-secondary border-bottom"
+                  placeholder="Username"
+                  type="text"
+                  required
+                  id="userName"
+                />
+                <label for="userName"> Username </label>
+              </div>
+              <div class="form-floating mt-5">
+                <input
+                  class="form-control border-end-0 border-top-0 border-start-0 border-2 border-secondary border-bottom"
+                  placeholder="Password"
+                  type="password"
+                  required
+                  id="password"
+                />
+                <label for="password"> Password </label>
+              </div>
+              <div
+                class="row align-items-center justify-content-center"
+                id="alert-msg"
+              ></div>
+              <div class="row mt-5 align-items-center justify-content-center">
+                <div class="col-6 ms-auto me-auto form-check form-switch">
+                  <input
+                    class="ms-auto me-auto form-check-input"
+                    type="checkbox"
+                    id="showPassword"
+                    onchange="show_password()"
+                  />
+                  <label class="ms-2" for="showPassword"> Show password </label>
+                </div>
+                <div class="col-6 ps-5 ms-auto me-auto">
+                  <button
+                    class="ms-5 align-self-end btn btn-outline-secondary"
+                    type="submit"
+                  >
+                    login
+                  </button>
+                  <!-- <a href="" class="btn"></a> -->
+                </div>
+              </div>
+            </form>
+            <div class="row mt-5">
+              <div class="d-flex justify-content-center">
+                <p>I don't have a account already</p>
+                <a href="./sign-up.html" class="ms-2"> Sign up </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="./../assets/js/login.js"></script>
+    <script src="./../assets/js/rest-operation.js"></script>
+  </body>
+</html>

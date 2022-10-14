@@ -23,7 +23,7 @@
         <div class="mt-3 mb-3">
           <p class="h1 text-center text-primary">do Task</p>
         </div>
-        <form onsubmit="createTodo()" class="">
+        <form onsubmit="createTodo(event)" class="">
           <div class="row g-3 align-items-center">
             <!-- <div class="col-lg-1 d-md-none"></div> -->
             <div
@@ -52,6 +52,13 @@
             <div
               class="ms-xxl-2 ms-xl-4 ms-lg-4 ms-md-5 ms-5 col-xxl-1 col-xl-1 col-lg-1 col-md-1 col-sm-1 col-4"
             >
+              <input
+                type="number"
+                name=""
+                class="d-none"
+                value=""
+                id="user_id"
+              />
               <button
                 type="submit"
                 class="pe-3 ps-3 pb-2 pt-2 btn btn-outline-secondary"
@@ -124,29 +131,23 @@
       ></div> -->
     </section>
     <footer
+      id="main-page-footer"
       class="parent-container-max-width parent-container mt-5 bg-light footer pt-2 pb-2 ps-lg-2 ps-md-3 ps-sm-2 ps-2 pe-2 ps-xl-4 ps-xxl-4 pe-lg-2 pe-md-3 pe-sm-2 pe-xl-4 pe-xxl-4"
     >
-      <div class="row">
-        <!-- <div class="col-6" id="userNameSpace">
-          <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i>
-          <p>Username</p>
-        </div>
-        <div class="col-6" id="userTaskStatus"></div> -->
-        <div class="container d-flex align-items-center justify-content-center">
-          <div class="">
-            <a class="text-decoration-none" href="">
-              <button class="btn btn-outline-secondary ms-auto me-auto">
-                Login
-              </button>
-            </a>
-            <a class="text-decoration-none" href="">
-              <button class="btn btn-outline-secondary ms-auto me-auto">
-                Sign up
-              </button>
-            </a>
-          </div>
-        </div>
-      </div>
+      
+
+      <!-- <div class="container d-flex align-items-center justify-content-center">
+        <a class="text-decoration-none" href="./pages/log-in.html">
+          <button class="btn btn-outline-secondary ms-auto me-auto">
+            Login
+          </button>
+        </a>
+        <a class="text-decoration-none" href="./pages/sign-up.html">
+          <button class="btn btn-outline-secondary ms-auto me-auto">
+            Sign up
+          </button>
+        </a>
+      </div> -->
     </footer>
 
     <!-- <section>
@@ -185,13 +186,19 @@
     </div >
 </section> -->
 
-    <script src="./assets/js/main.js"></script>
-    <script>
-      getApi("http://localhost:8080/api/tasks");
-    </script>
-    <script src="./assets/js/set-min-date.js"></script>
     <script src="./assets/js/rest-operation.js"></script>
-
+    <script>
+      async function pageOnLoad() {
+        let data = await getUserData("http://localhost:8080/user");
+        // getDataS("http://localhost:8080/api/tasks");
+        // console.log(data.task);
+        show(data);
+      }
+      getUserData("http://localhost:8080/user");
+      pageOnLoad();
+    </script>
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/set-min-date.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.6.1.js"
       integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
