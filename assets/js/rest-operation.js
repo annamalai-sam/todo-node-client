@@ -1,4 +1,3 @@
-
 function deleteTodo(event) {
     const todoId = event.getAttribute("data-todo-id")
     // console.log(todoId)
@@ -31,7 +30,7 @@ async function getDataS(url) {
 
 async function getUserData(url) {
     var myHeaders = new Headers();
-    myHeaders.append("Authorization", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlZlbmthdCIsInBhc3N3b3JkIjoiSGFwcHl0QDEyMyIsInVzZXJfaWQiOjEsImlhdCI6MTY2NTU3MTAzNywiZXhwIjoxNjY1NTc4MjM3fQ.PobcSwk9TIvT6iheqmJig9BSMVr1B8EAuftrF9VBe1Q");
+    myHeaders.append("Authorization", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlZlbmthdCIsInBhc3N3b3JkIjoiSmVydUAyNiIsInVzZXJfaWQiOjEsImlhdCI6MTY2NjY3MTE3NiwiZXhwIjoxNjY2Njc4Mzc2fQ.UALqzepvPb1eUeuzk0wGMrkZhKQeodvwT-wRoo-Zn8w");
     var requestOptions = {
         method: 'GET',
         headers: myHeaders,
@@ -101,4 +100,3 @@ function updateTask(todoId) {
         window.location.reload()
     )
 }
-
