@@ -22,7 +22,7 @@ async function createNewUser(event) {
         document.getElementById("alert-msg").innerHTML = `<p class="mt-5 text-center text-danger">password is mismatch</p>`
         // console.log(userAlreadyExist(userName))
     }
-    const users = await getDataS("http://localhost:8080/api/user")
+    const users = await getDataS("http://localhost:4200/api/user")
     console.log(users)
     let isUsed = false;
     for (let user of users) {
@@ -48,7 +48,7 @@ async function createNewUser(event) {
             body: raw,
             redirect: 'follow'
         };
-        fetch("http://localhost:8080/api/user", requestOptions).then(
+        fetch("http://localhost:4200/api/user", requestOptions).then(
             window.location.href = "./../../index.html"
         )
         // alert("sign up successfully")

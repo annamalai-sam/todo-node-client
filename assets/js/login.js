@@ -38,7 +38,7 @@ async function loginHandler(event) {
 
 async function isUserDetailsIsMatch(userName, password) {
     let isUserDetailsIsNotMatch = false
-    const users = await getDataS("http://localhost:8080/api/user")
+    const users = await getDataS("http://localhost:4200/api/user")
     // console.log(users)
     for (const user of users) {
         // console.log(user)
@@ -68,7 +68,7 @@ async function getTokens(userName, password) {
         redirect: 'follow'
     };
 
-    const response = await fetch("http://localhost:8080/login", requestOptions)
+    const response = await fetch("http://localhost:4200/login", requestOptions)
     var data = await response.text();
     alert(data)
     return data

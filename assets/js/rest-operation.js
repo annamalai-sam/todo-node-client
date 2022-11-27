@@ -5,7 +5,7 @@ function deleteTodo(event) {
         method: 'DELETE',
         redirect: 'follow'
     };
-    fetch("http://localhost:8080/api/tasks/" + todoId, requestOptions).then(
+    fetch("http://localhost:4200/api/tasks/" + todoId, requestOptions).then(
         window.location.reload()
     )
 }
@@ -61,7 +61,7 @@ function createTodo() {
         body: raw,
         redirect: 'follow'
     };
-    fetch("http://localhost:8080/api/tasks", requestOptions).then(
+    fetch("http://localhost:4200/api/tasks", requestOptions).then(
         window.location.reload()
     )
 }
@@ -72,7 +72,7 @@ function updateTodo(event) {
         method: 'GET',
         redirect: 'follow'
     };
-    fetch("http://localhost:8080/api/status/" + todoId, requestOptions).then(
+    fetch("http://localhost:4200/api/status/" + todoId, requestOptions).then(
         window.location.reload()
     )
 }
@@ -96,7 +96,7 @@ function updateTask(todoId) {
         redirect: 'follow'
     };
 
-    fetch("http://localhost:8080/api/tasks/" + todoId, requestOptions).then(
+    fetch("http://localhost:4200/api/tasks/" + todoId, requestOptions).then(
         window.location.reload()
     )
 }
